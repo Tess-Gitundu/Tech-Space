@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/Articles-Cards.css">
     <link rel="stylesheet" href="assets/css/simple-sticky-footer.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/animations.css">
 </head>
 
 <body style="background: url(&quot;assets/img/Tech%20Space.jpeg&quot;) top left / cover no-repeat;">
@@ -30,14 +31,20 @@
     <section class="position-relative py-4 py-xl-5">
         <div class="container position-relative">
             <div class="row d-flex justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4">
-                    <div class="card mb-5" style="background: rgba(15,14,14, 0.6);">
+                <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4" id="animatedSignUpSection">
+                    <div class="card mb-5" style="background: rgba(15,14,14, 0.6);border-radius: 2em">
                         <div class="card-body p-sm-5">
-                            <h2 class="text-center text-light mb-4">Sign Up to Tech Space</h2>
+                            <h2 class="text-center text-light mb-4">Find Space</h2>
                             <form method="post">
-                                <div class="mb-3"><input class="form-control" type="text" id="name-2" name="username" placeholder="Username" style="color: rgb(33, 37, 41);"></div>
+                              <div class="mb-3"><input class="form-control" type="text" id="name-2" name="username" placeholder="Username" style="color: rgb(33, 37, 41);"></div>
                                 <div class="mb-3"><input class="form-control" type="email" id="email-2" name="email" placeholder="Email"></div>
-                                <div class="mb-3"><input class="form-control" type="text" id="name-1" name="location" placeholder="Location"></div>
+                                <div class="mb-3">                <select name="animalSpotted" class="form-select" aria-label="Default select example">
+                    									<option selected>Select Location</option>
+                    									<option  value="Lion">Kiambu</option>
+                    									<option  value="Giraffe">Naivasha</option>
+                    									<option  value="Zebra">Kisumu</option>
+                </select></div>
+
                                 <div class="mb-3"></div>
                                 <div><button class="btn link-light border-light d-block w-100" type="submit">Submit</button></div>
                             </form>
