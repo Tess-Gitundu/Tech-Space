@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class User implements Tech{
 
     private String userName;
@@ -43,6 +45,27 @@ public class User implements Tech{
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return available == user.available && id == user.id && Objects.equals(userName, user.userName) && Objects.equals(userLocation, user.userLocation) && Objects.equals(language, user.language);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userName, userLocation, language, available, id);
     }
 
     @Override
