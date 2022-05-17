@@ -1,4 +1,5 @@
 import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
 
 import java.util.List;
 import java.util.Objects;
@@ -86,7 +87,17 @@ public class User implements Tech{
     }
 
     public void update(String userName, String userLocation, String language, boolean available) {
-
+        String sql = "UPDATE users SET (userName, userLocation, language, available) = (SELECT :userName, userLocation, language, available FROM users) WHERE id=:id";
+        try(Connection con = DB.sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userName", userName)
+                    .addParameter("userLocation", userLocation)
+                    .addParameter("language", language)
+                    .addParameter("available", available)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
     }
 
     public static List<User> getAll() {
