@@ -20,7 +20,7 @@ class UserTest {
     }
 
     @Test
-    public void Animal_instantiatesCorrectly() {
+    public void User_instantiatesCorrectly() {
         User user = setupUser();
         assertTrue(user instanceof User);
     }
