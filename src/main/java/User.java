@@ -70,7 +70,7 @@ public class User implements Tech{
     }
 
     @Override
-    public void add() {
+    public void save() {
 
     }
 
@@ -86,8 +86,4 @@ public class User implements Tech{
         return null;
     }
 
-    @Override
-    public void delete() {
-
-    }
 }
