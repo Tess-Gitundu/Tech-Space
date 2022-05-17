@@ -88,9 +88,7 @@ public class User implements Tech{
     }
 
     @Override
-    public void deleteById(int id) {
+    public void delete() {
 
     }
-
-
 }

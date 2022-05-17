@@ -8,5 +8,5 @@ public interface Tech {
     void update();
 
     //delete
-    void deleteById(int id);
+    void delete();
 }

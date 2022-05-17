@@ -65,7 +65,25 @@ class UserTest {
         user1.add();
         User user2 = setupUser();
         user2.add();
+        assert User.getAll() != null;
         assertEquals(2,User.getAll().size());
     }
 
+    @Test
+    public void deletesById() {
+        User user = setupUser();
+        user.add();
+        user.delete();
+        assertNull(User.findById(user.getId()));
+    }
+
+    @Test
+    public void EnsureUserNameIsNotNull() {
+        User user = setupUser();
+        try {
+            user.add();
+        }catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
