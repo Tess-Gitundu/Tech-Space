@@ -23,4 +23,10 @@ class LocationTest {
         Location location = setupLocation();
         assertTrue(location instanceof Location);
     }
+
+    @Test
+    public void Location_getsSavedLocation() {
+        Location location = setupLocation();
+        assertEquals("Nairobi", location.getLocation());
+    }
 }
