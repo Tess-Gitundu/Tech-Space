@@ -11,7 +11,8 @@ class UserTest {
     }
 
     @AfterEach
-    void tearDown() {
+    public void clearDown() {
+        User.clearAll();
     }
 
     //helper method
@@ -52,7 +53,7 @@ class UserTest {
 
     //crud tests
     @Test
-    public void addsUserAndReturnsCorrectInfo() {
+    public void savesUserAndReturnsCorrectInfo() {
         User user = setupUser();
         user.save();
         User foundUser = User.findById(user.getId());
@@ -75,14 +76,6 @@ class UserTest {
         assertEquals("Jane Doe",user.getUserName());
         user.update("John Doe","Kisumu","Python",false);
         assertEquals("John Doe", user.getUserName());
-    }
-
-    @Test
-    public void deletesUserById() {
-        User user = setupUser();
-        user.save();
-        user.delete();
-        assertNull(User.findById(user.getId()));
     }
 
     @Test
