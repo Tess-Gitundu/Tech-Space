@@ -20,5 +20,15 @@ public class App {
             return new ModelAndView(model, "spaces.html");
         }, new HandlebarsTemplateEngine());
 
+        get("/join", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "signUp.html");
+        }, new HandlebarsTemplateEngine());
+
+        post("/add", (request, response) -> {
+            response.redirect("spaces");
+            return null;
+        });
+
     }
 }
