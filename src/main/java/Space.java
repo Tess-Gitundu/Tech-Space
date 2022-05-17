@@ -1,5 +1,6 @@
 public class Space implements Tech {
 
+
     @Override
     public void add() {
 
