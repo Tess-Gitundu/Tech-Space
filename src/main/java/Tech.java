@@ -1,11 +1,8 @@
 import java.util.List;
 
 public interface Tech {
-    //create
+    //add
     void add ();
-
-    //update
-    void update();
 
     //delete
     void delete();

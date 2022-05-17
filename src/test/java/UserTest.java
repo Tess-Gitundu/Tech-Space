@@ -20,39 +20,39 @@ class UserTest {
     }
 
     @Test
-    public void User_instantiatesCorrectly() {
+    public void instantiatesUserCorrectly() {
         User user = setupUser();
         assertTrue(user instanceof User);
     }
 
     //getter tests
     @Test
-    public void User_getsNameOfSavedUser() {
+    public void getsNameOfSavedUser() {
         User user = setupUser();
         assertEquals("Jane Doe", user.getUserName());
     }
 
     @Test
-    public void User_getsLocationOfSavedUser() {
+    public void getsLocationOfSavedUser() {
         User user = setupUser();
         assertEquals("Nairobi", user.getUserLocation());
     }
 
     @Test
-    public void User_getsLanguageDetailOfSavedUser() {
+    public void getsLanguageDetailOfSavedUser() {
         User user = setupUser();
         assertEquals("Java", user.getLanguage());
     }
 
     @Test
-    public void User_getsAvailabilityOfSavedUser() {
+    public void getsAvailabilityOfSavedUser() {
         User user = setupUser();
         assertTrue(user.isAvailable());
     }
 
     //crud tests
     @Test
-    public void UserAddsAndReturnsCorrectInfo() {
+    public void addsUserAndReturnsCorrectInfo() {
         User user = setupUser();
         user.add();
         User foundUser = User.findById(user.getId());
@@ -60,7 +60,7 @@ class UserTest {
     }
 
     @Test
-    public void User_allInstancesAreSaved() {
+    public void allUserInstancesAreSaved() {
         User user1 = setupUser();
         user1.add();
         User user2 = setupUser();
@@ -70,7 +70,15 @@ class UserTest {
     }
 
     @Test
-    public void deletesById() {
+    void correctlyUpdatesUserInfo() {
+        User user = setupUser();
+        assertEquals("Jane Doe",user.getUserName());
+        user.update("John Doe","Kisumu","Python",false);
+        assertEquals("John Doe", user.getUserName());
+    }
+
+    @Test
+    public void deletesUserById() {
         User user = setupUser();
         user.add();
         user.delete();
@@ -78,7 +86,7 @@ class UserTest {
     }
 
     @Test
-    public void EnsureUserNameIsNotNull() {
+    public void nullFieldsAreNotSaved() {
         User user = new User("","","",true);
         try {
             user.add();

@@ -74,8 +74,7 @@ public class User implements Tech{
 
     }
 
-    @Override
-    public void update() {
+    public void update(String userName, String userLocation, String language, boolean available) {
 
     }
 
