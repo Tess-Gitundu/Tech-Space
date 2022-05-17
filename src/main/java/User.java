@@ -1,3 +1,5 @@
+import org.sql2o.Connection;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -71,7 +73,16 @@ public class User implements Tech{
 
     @Override
     public void save() {
-
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO users (userName, userLocation, language, available) VALUES (:userName, :userLocation, :language, :available)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("userName", this.userName)
+                    .addParameter("userLocation", this.userLocation)
+                    .addParameter("language", this.language)
+                    .addParameter("available", this.available)
+                    .executeUpdate()
+                    .getKey();
+        }
     }
 
     public void update(String userName, String userLocation, String language, boolean available) {
