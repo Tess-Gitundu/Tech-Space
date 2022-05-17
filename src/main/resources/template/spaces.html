@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="assets/css/Articles-Cards.css">
     <link rel="stylesheet" href="assets/css/simple-sticky-footer.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/animations.css">
 </head>
 
 <body style="background: url(&quot;assets/img/Tech%20Space.jpeg&quot;) top left / cover no-repeat;">
@@ -36,22 +37,25 @@
         </div>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             <div class="col">
-                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/ihub.jpeg">
-                    <div class="card-body p-4" style="background-color:black">
+				<div class="container-fluid" style=" background-color:black;border-radius: 3em;height:500px" id="animatedLocation1">\
+					
+					<img style="height: 200px" src="assets/img/ihub.jpeg">
+                    <div class="container" style="background-color:black">
                         <p class="text-primary card-text mb-0">Space</p>
-                        <h4 class="card-title">ABC Tech Hub</h4>
-                        <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                        <h4 style="color:white">ABC Tech Hub</h4>
+                        <p style="color:white">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
                         <div class="d-flex"><i class="material-icons fs-1">location_on</i>
                             <div>
-                                <p class="fw-bold mb-0">Kitengela</p>
-                                <p class="text-muted mb-0">Nairobi, Kenya</p>
+                                <p class="fw-bold mb-0" style="color:white">Kitengela</p>
+                                <p class="text-muted mb-0" style="color:white">Nairobi, Kenya</p>
                             </div>
                         </div>
                     </div>
-                </div>
+				</div>
+                
             </div>
             <div class="col">
-                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/ihub2.jpg">
+                <div class="card" id="animatedLocation2"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/ihub2.jpg">
                     <div class="card-body p-4">
                         <p class="text-primary card-text mb-0">Space</p>
                         <h4 class="card-title">DEF ICT Space</h4>
@@ -66,7 +70,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/ihub3.jpg">
+                <div class="card" id="animatedLocation3"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="assets/img/ihub3.jpg">
                     <div class="card-body p-4">
                         <p class="text-primary card-text mb-0">Space</p>
                         <h4 class="card-title">GHI Coding Space</h4>
