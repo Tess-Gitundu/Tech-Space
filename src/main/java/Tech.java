@@ -2,8 +2,6 @@ import java.util.List;
 
 public interface Tech {
     //add
-    void add ();
+    void save ();
 
-    //delete
-    void delete();
 }

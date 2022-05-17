@@ -1,7 +1,10 @@
+import org.sql2o.Connection;
+import org.sql2o.Sql2oException;
+
 import java.util.List;
 import java.util.Objects;
 
-public class User implements Tech{
+public class User implements Tech {
 
     private String userName;
     private String userLocation;
@@ -70,24 +73,58 @@ public class User implements Tech{
     }
 
     @Override
-    public void add() {
-
+    public void save() {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO users (userName, userLocation, language, available) VALUES (:userName, :userLocation, :language, :available)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("userName", this.userName)
+                    .addParameter("userLocation", this.userLocation)
+                    .addParameter("language", this.language)
+                    .addParameter("available", this.available)
+                    .executeUpdate()
+                    .getKey();
+        }
     }
 
     public void update(String userName, String userLocation, String language, boolean available) {
-
+        String sql = "UPDATE users SET (userName, userLocation, language, available) = (SELECT :userName, :userLocation, :language, :available FROM users) WHERE id=:id";
+        try (Connection con = DB.sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("userName", userName)
+                    .addParameter("userLocation", userLocation)
+                    .addParameter("language", language)
+                    .addParameter("available", available)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
     public static List<User> getAll() {
-        return null;
+        String sql = "SELECT * FROM users";
+        try (Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql).executeAndFetch(User.class);
+        }
     }
 
     public static User findById(int id) {
-        return null;
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM users WHERE id=:id";
+            User user = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(User.class);
+            return user;
+        }
     }
 
-    @Override
-    public void delete() {
-
+    public static void clearAll() {
+        String sql = "DELETE from users";
+        try (Connection con = DB.sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex.getMessage());
+        }
     }
+
 }

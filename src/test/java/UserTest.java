@@ -11,7 +11,8 @@ class UserTest {
     }
 
     @AfterEach
-    void tearDown() {
+    public void clearDown() {
+        User.clearAll();
     }
 
     //helper method
@@ -52,9 +53,9 @@ class UserTest {
 
     //crud tests
     @Test
-    public void addsUserAndReturnsCorrectInfo() {
+    public void savesUserAndReturnsCorrectInfo() {
         User user = setupUser();
-        user.add();
+        user.save();
         User foundUser = User.findById(user.getId());
         assertEquals(user,foundUser);
     }
@@ -62,9 +63,9 @@ class UserTest {
     @Test
     public void allUserInstancesAreSaved() {
         User user1 = setupUser();
-        user1.add();
+        user1.save();
         User user2 = setupUser();
-        user2.add();
+        user2.save();
         assert User.getAll() != null;
         assertEquals(2,User.getAll().size());
     }
@@ -78,18 +79,10 @@ class UserTest {
     }
 
     @Test
-    public void deletesUserById() {
-        User user = setupUser();
-        user.add();
-        user.delete();
-        assertNull(User.findById(user.getId()));
-    }
-
-    @Test
     public void nullFieldsAreNotSaved() {
         User user = new User("","","",true);
         try {
-            user.add();
+            user.save();
             assert User.getAll() != null;
             assertEquals(1,User.getAll().size());
         }catch (IllegalArgumentException ex){
