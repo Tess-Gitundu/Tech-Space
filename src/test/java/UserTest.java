@@ -24,4 +24,28 @@ class UserTest {
         User user = setupUser();
         assertTrue(user instanceof User);
     }
+
+    @Test
+    public void User_getsNameOfSavedUser() {
+        User user = setupUser();
+        assertEquals("Jane Doe", user.getUserName());
+    }
+
+    @Test
+    public void User_getsLocationOfSavedUser() {
+        User user = setupUser();
+        assertEquals("Nairobi", user.getUserLocation());
+    }
+
+    @Test
+    public void User_getsLanguageDetailOfSavedUser() {
+        User user = setupUser();
+        assertEquals("Java", user.getLanguage());
+    }
+
+    @Test
+    public void User_getsAvailabilityOfSavedUser() {
+        User user = setupUser();
+        assertTrue(user.isAvailable());
+    }
 }
