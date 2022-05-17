@@ -15,5 +15,10 @@ public class App {
             return new ModelAndView(model, "index.html");
         }, new HandlebarsTemplateEngine());
 
+        get("spaces", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "spaces.html");
+        }, new HandlebarsTemplateEngine());
+
     }
 }
