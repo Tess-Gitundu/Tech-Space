@@ -25,6 +25,7 @@ class UserTest {
         assertTrue(user instanceof User);
     }
 
+    //getter tests
     @Test
     public void User_getsNameOfSavedUser() {
         User user = setupUser();
@@ -48,4 +49,23 @@ class UserTest {
         User user = setupUser();
         assertTrue(user.isAvailable());
     }
+
+    //crud tests
+    @Test
+    public void UserAddsAndReturnsCorrectInfo() {
+        User user = setupUser();
+        user.add();
+        User foundUser = User.findById(user.getId());
+        assertEquals(user,foundUser);
+    }
+
+    @Test
+    public void User_allInstancesAreSaved() {
+        User user1 = setupUser();
+        user1.add();
+        User user2 = setupUser();
+        user2.add();
+        assertEquals(2,User.getAll().size());
+    }
+
 }

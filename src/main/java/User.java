@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Objects;
 
 public class User implements Tech{
@@ -74,13 +75,16 @@ public class User implements Tech{
     }
 
     @Override
-    public void findById(int id) {
+    public void update() {
 
     }
 
-    @Override
-    public void update() {
+    public static List<User> getAll() {
+        return null;
+    }
 
+    public static User findById(int id) {
+        return null;
     }
 
     @Override
@@ -88,8 +92,5 @@ public class User implements Tech{
 
     }
 
-    @Override
-    public void clearAll() {
 
-    }
 }

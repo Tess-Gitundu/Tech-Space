@@ -1,10 +1,11 @@
 import java.util.Objects;
 
-public class Location implements Tech{
+public class Location {
 
     private String location;
 
     public Location(String location) {
+
         this.location = location;
     }
 
@@ -29,28 +30,4 @@ public class Location implements Tech{
         return Objects.hash(location);
     }
 
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void findById(int id) {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void deleteById(int id) {
-
-    }
-
-    @Override
-    public void clearAll() {
-
-    }
 }
