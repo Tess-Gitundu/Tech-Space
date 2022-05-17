@@ -79,11 +79,13 @@ class UserTest {
 
     @Test
     public void EnsureUserNameIsNotNull() {
-        User user = setupUser();
+        User user = new User("","","",true);
         try {
             user.add();
-        }catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+            assert User.getAll() != null;
+            assertEquals(1,User.getAll().size());
+        }catch (IllegalArgumentException ex){
+            System.out.println(ex.getMessage());
         }
     }
 }
