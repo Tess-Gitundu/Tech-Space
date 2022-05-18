@@ -1,0 +1,84 @@
+
+@keyframes fadeIn {
+	from{
+		opacity:0;
+	}
+	
+	to{
+		opacity:1;
+	}
+}
+
+@keyframes slideLeft{
+	0%{
+		transform: translateX(-500px);
+	}
+	
+	100%{
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slideUp{
+	0%{
+		transform: translateY(500px) rotate(-45deg);
+	}
+	
+	100%{
+		transform: translateY(0px) rotate(0deg);
+	}
+}
+
+@keyframes rotateIn{
+	0%{
+		transform: rotate(-45deg);
+	}
+	
+	100%{
+		transform: rotate(0deg);
+	}
+
+}
+
+@keyframes delayedEntry{
+	0%{
+		transform: translateX(-500px);
+	}
+	
+	100%{
+		transform: translateX(0px);
+	}
+}
+
+
+
+#animatedLocation1{
+	animation:slideLeft 0.4s, fadeIn 0.4s;
+}
+
+#animatedLocation2{
+	
+	animation:slideLeft 1.4s,fadeIn 1.4s;
+	
+}
+
+#animatedLocation3{
+	animation:slideLeft 2.4s, fadeIn 2.4s;
+}
+
+
+
+
+#animatedRegisterBar{
+	animation: slideLeft 1.4s, fadeIn 0.8s;
+
+}
+
+#animatedSignUpSection{
+	animation: fadeIn 0.8s;
+	animation: slideUp 0.5s;
+}
+
+#animatedSignUpSection:hover{
+	transform: scale(1.3);
+}

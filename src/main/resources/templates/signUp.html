@@ -1,0 +1,33 @@
+{{#partial "content"}}
+    <section class="position-relative py-4 py-xl-5">
+        <div class="container position-relative">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5 col-xxl-4" id="animatedSignUpSection">
+                    <div class="card mb-5" style="background: rgba(15,14,14, 0.6);border-radius: 2em">
+                        <div class="card-body p-sm-5">
+                            <h2 class="text-center text-light mb-4">Find Space</h2>
+                            <form method="post" action="/add">
+                              <div class="mb-3"><input class="form-control" type="text" id="name-2" name="username" placeholder="Username" style="color: rgb(33, 37, 41);"></div>
+                                <div class="mb-3">                <select name="location" class="form-select" aria-label="Default select example">
+                    									<option selected>Select Location</option>
+                    									<option  value="Kiambu">Kiambu</option>
+                    									<option  value="Naivasha">Naivasha</option>
+                    									<option  value="Zebra">Kisumu</option>
+                </select></div>
+                                <div class="mb-3"><input class="form-control" type="text" id="language-2" name="language" placeholder="Programming Language"></div>
+                                <div class="mb-3"><input class="form-check-input" type="checkbox" id="available-2" name="available" value="true">
+
+                                    <label class="form-check-label text-light" for="available-2">Available for collaboration</label></div>
+
+                                <div class="mb-3"></div>
+                                <div><button class="btn link-light border-light d-block w-100" type="submit">Submit</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/partial}}
+
+    {{> layout.hbs}}
