@@ -1,3 +1,6 @@
+import DAO.UserDao;
+import Database.DB;
+import Models.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -5,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
+    private UserDao userDao = new UserDao(DB.sql2o);
 
     @BeforeEach
     void setUp() {
@@ -12,7 +16,7 @@ class UserTest {
 
     @AfterEach
     public void clearDown() {
-        User.clearAll();
+        userDao.clearAll();
     }
 
     //helper method
@@ -55,36 +59,39 @@ class UserTest {
     @Test
     public void savesUserAndReturnsCorrectInfo() {
         User user = setupUser();
-        user.save();
-        User foundUser = User.findById(user.getId());
+        userDao.save(user);
+        User foundUser = userDao.findById(user.getId());
         assertEquals(user,foundUser);
     }
 
     @Test
     public void allUserInstancesAreSaved() {
         User user1 = setupUser();
-        user1.save();
+        userDao.save(user1);
         User user2 = setupUser();
-        user2.save();
-        assert User.getAll() != null;
-        assertEquals(2,User.getAll().size());
+        userDao.save(user2);
+        assert userDao.getAll() != null;
+        assertEquals(2,userDao.getAll().size());
     }
 
     @Test
     void correctlyUpdatesUserInfo() {
         User user = setupUser();
+        userDao.save(user);
+        User newUser = new User("John Doe","Kisumu","Python",false);
+        newUser.setId(user.getId());
         assertEquals("Jane Doe",user.getUserName());
-        user.update("John Doe","Kisumu","Python",false);
-        assertEquals("John Doe", user.getUserName());
+        userDao.update(user.getId(), newUser);
+        assertEquals("John Doe", newUser.getUserName());
     }
 
     @Test
     public void nullFieldsAreNotSaved() {
         User user = new User("","","",true);
         try {
-            user.save();
-            assert User.getAll() != null;
-            assertEquals(1,User.getAll().size());
+            userDao.save(user);
+            assert userDao.getAll() != null;
+            assertEquals(1,userDao.getAll().size());
         }catch (IllegalArgumentException ex){
             System.out.println(ex.getMessage());
         }

@@ -1,5 +1,6 @@
 import static spark.Spark.*;
 
+import Database.DB;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -9,7 +10,9 @@ import java.util.Map;
 
 public class App {
     public static void main(String[] args) {
+        DB.createTables(DB.sql2o.open());
         staticFileLocation("public");
+
         get("/", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "index.html");
