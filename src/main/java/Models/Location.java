@@ -3,6 +3,7 @@ package Models;
 import java.util.Objects;
 
 public class Location {
+    private int id;
 
     private String location;
 
@@ -32,4 +33,11 @@ public class Location {
         return Objects.hash(location);
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
