@@ -53,6 +53,7 @@ public class App {
             }
             User user = new User(username, location, language, available);
             userDao.save(user);
+            request.session().attribute("user", user.getUserName());
             response.redirect("spaces");
             return null;
         });
