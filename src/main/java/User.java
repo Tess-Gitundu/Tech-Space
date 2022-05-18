@@ -86,14 +86,15 @@ public class User implements Tech {
         }
     }
 
-    public void update(String userName, String userLocation, String language, boolean available) {
-        String sql = "UPDATE users SET (userName, userLocation, language, available) = (SELECT :userName, :userLocation, :language, :available FROM users) WHERE id=:id";
+    public void update(int id, String userName, String userLocation, String language, boolean available) {
+        String sql = "UPDATE users SET userName=:userName, userLocation=:userLocation, language=:language, available=:available WHERE id=:id";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("userName", userName)
                     .addParameter("userLocation", userLocation)
                     .addParameter("language", language)
                     .addParameter("available", available)
+                    .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
             System.out.println(ex.getMessage());

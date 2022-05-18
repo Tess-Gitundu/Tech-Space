@@ -74,7 +74,7 @@ class UserTest {
     void correctlyUpdatesUserInfo() {
         User user = setupUser();
         assertEquals("Jane Doe",user.getUserName());
-        user.update("John Doe","Kisumu","Python",false);
+        user.update(user.getId(),"John Doe","Kisumu","Python",false);
         assertEquals("John Doe", user.getUserName());
     }
 
