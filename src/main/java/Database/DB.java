@@ -46,4 +46,22 @@ public class DB {
         }
     }
 
+    public static void dropTables(Connection conn) {
+        try {
+            conn.createQuery("DROP TABLE users").executeUpdate();
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            conn.createQuery("DROP TABLE locations").executeUpdate();
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            conn.createQuery("DROP TABLE spaces").executeUpdate();
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
 }

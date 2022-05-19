@@ -1,5 +1,5 @@
 import DAO.LocationDao;
-import Database.DB;
+import Database.DatabaseRule;
 import Models.Location;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,9 +15,9 @@ class LocationTest {
 
     @BeforeEach
     void setUp() {
-        conn = DB.sql2o.open();
-        DB.createTables(conn);
-        locationDao = new LocationDao(DB.sql2o);
+        conn = DatabaseRule.sql2o.open();
+        DatabaseRule.createTables(conn);
+        locationDao = new LocationDao(DatabaseRule.sql2o);
     }
 
     @AfterEach
@@ -33,13 +33,6 @@ class LocationTest {
     public void Location_instantiatesCorrectly() {
         Location location = setupLocation();
         assertTrue(location instanceof Location);
-    }
-
-    @Test
-    public void populateDb(){
-        Location location = new Location("Mombasa");
-        locationDao.add(location);
-        assertEquals(true, true);
     }
 
     @Test

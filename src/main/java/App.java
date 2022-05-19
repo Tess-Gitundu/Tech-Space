@@ -4,6 +4,7 @@ import DAO.LocationDao;
 import DAO.SpaceDao;
 import DAO.UserDao;
 import Database.DB;
+import Models.Location;
 import Models.Space;
 import Models.User;
 import org.sql2o.Connection;
@@ -91,6 +92,46 @@ public class App {
             model.put("titleUsers", true);
             return new ModelAndView(model, "users.html");
         }, new HandlebarsTemplateEngine());
+
+        get("/reset", (request, response) -> {
+            DB.dropTables(conn);
+            DB.createTables(conn);
+            response.redirect("/");
+            return null;
+        });
+
+        get("/populatedb", (request, response) -> {
+            // add locations
+            Location nairobi = new Location("Nairobi");
+            locationDao.add(nairobi);
+            Location mombasa = new Location("Mombasa");
+            locationDao.add(mombasa);
+            Location kisumu = new Location("Kisumu");
+            locationDao.add(kisumu);
+            Location nakuru = new Location("Nakuru");
+            locationDao.add(nakuru);
+
+            // SPACES
+                // Nairobi
+            spaceDao.add(new Space("iHub coding space", "Tech space for open to all geeks", nairobi.getId(), false));
+            spaceDao.add(new Space("UON tech centre", "Free coding space for young developers", nairobi.getId(), false));
+            spaceDao.add(new Space("CityHub Tech centre", "Code code code", nairobi.getId(), false));
+            spaceDao.add(new Space("Moringa coding space", "Cyber innovation center", nairobi.getId(), false));
+
+                // Mombasa
+            spaceDao.add(new Space("Swahili tech hub", "Always be coding", mombasa.getId(), false));
+            spaceDao.add(new Space("Ziwani ICT center", "Every line counts", mombasa.getId(), false));
+
+                // Kisumu
+            spaceDao.add(new Space("Victoria Tech Hall", "Your code, our future", nairobi.getId(), false));
+            spaceDao.add(new Space("Greenwood centre", "Coding for the next generation", nairobi.getId(), false));
+            spaceDao.add(new Space("Code alive hub", "The place to be for all developers", nairobi.getId(), false));
+
+                // Nakuru
+            spaceDao.add(new Space("Computech Hub", "Where great minds meet.", nairobi.getId(), false));
+            response.redirect("/");
+            return null;
+        });
 
     }
 }

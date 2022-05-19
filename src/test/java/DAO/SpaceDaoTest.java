@@ -1,6 +1,6 @@
 package DAO;
 
-import Database.DB;
+import Database.DatabaseRule;
 import Models.Location;
 import Models.Space;
 import org.junit.After;
@@ -20,22 +20,15 @@ public class SpaceDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        conn = DB.sql2o.open();
-        DB.createTables(conn);
-        spaceDao = new SpaceDao(DB.sql2o);
-        locationDao = new LocationDao(DB.sql2o);
+        conn = DatabaseRule.sql2o.open();
+        DatabaseRule.createTables(conn);
+        spaceDao = new SpaceDao(DatabaseRule.sql2o);
+        locationDao = new LocationDao(DatabaseRule.sql2o);
     }
 
     @After
     public void tearDown() throws Exception {
         conn.close();
-    }
-
-    @Test
-    public void populateDb() {
-        Space space = new Space("Cyberspace hub", "Code code code", 3, false);
-        spaceDao.add(space);
-        assertEquals(true, true);
     }
 
     @Test

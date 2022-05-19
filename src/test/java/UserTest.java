@@ -1,21 +1,25 @@
 import DAO.LocationDao;
 import DAO.UserDao;
-import Database.DB;
+import Database.DatabaseRule;
 import Models.Location;
 import Models.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.sql2o.Connection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
-    private UserDao userDao = new UserDao(DB.sql2o);
+    private Connection conn;
+    private UserDao userDao = new UserDao(DatabaseRule.sql2o);
 
-    private LocationDao locationDao = new LocationDao(DB.sql2o);
+    private LocationDao locationDao = new LocationDao(DatabaseRule.sql2o);
 
     @BeforeEach
     void setUp() {
+        conn = DatabaseRule.sql2o.open();
+        DatabaseRule.createTables(conn);
     }
 
     @AfterEach
