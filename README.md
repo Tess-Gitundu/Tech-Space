@@ -46,14 +46,15 @@ When you run the commands successfully, you should have a local version of this 
 
 Feel free to fork the project and add neccessary changes.
 ## Technologies used
-+ HTML 5 -  This was used to structure the webpages.
-+ CSS3 - This was used to style the webpage
++ HTML 5 - To structure the webpages.
++ CSS3 - Custom webpage styling.
 + Bootstrap 5 -Webpage styling.
-+ Figma -Design web layout
-+ Font Awesome - This was Used for iconography
-+ Handlebars - To connect our html pages
-+ Postgres - This was used to create & connect to our database
-+ Spark - Framework
++ Figma -Design web layout.
++ Font Awesome - For iconography.
++ Handlebars - To connect our html pages.
++ Java 11 - Language used.
++ Postgres - To create & connect to our database.
++ Spark - Framework.
 
 
 ## Contact information
