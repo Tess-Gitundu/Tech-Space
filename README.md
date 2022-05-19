@@ -1,5 +1,5 @@
 # TECH SPACE
-By Kimani Mbatia, Nicholas Kimutai, Samuel Odhiambo, Teresiah Gitundu, Yvonne Charawe
+By Kimani Mbatia, Nicholas Kimutai, Samuel Odhiambo, Teresiah Gitundu & Yvonne Charawe
 
 ## Table of contents
 + [Description](#Description)
