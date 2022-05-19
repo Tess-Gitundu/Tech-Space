@@ -1,0 +1,35 @@
+
+{{#partial "content"}}
+
+    <div class="container py-4 py-xl-5" style="background: rgba(15,14,14, 0.6);border-radius: 20px;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center text-light mx-auto">
+                <h2>Spaces</h2>
+                <p class="w-lg-50">Find a detailed list of available spaces here. Click on a space to see more details and book your spot.</p>
+            </div>
+        </div>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            {{#each spaces}}
+            <div class="col">
+				<div class="container-fluid" style="background: rgba(15,14,14, 0.8);border-radius: 3em;height:500px;" id="animatedLocation1">\
+					<br>
+					<img class="img-fluid" style="height: 205px; width: 100%" src="assets/img/ihub{{id}}.jpg">
+                    <div class="container" style="background:background: rgba(15,14,14, 0.8)">
+                        <p class="text-primary card-text mb-0">Space</p>
+                        <h4 style="color:white">{{spaceName}}</h4>
+                        <p style="color:white">{{spaceDetails}}&nbsp; &nbsp;</p>
+                        <div class="d-flex"><i class="material-icons fs-1">location_on</i>
+                            <div>
+<!--                                <p class="fw-bold mb-0" style="color:white">Lavington</p>-->
+                                <p class="fw-bold mb-0" style="color:white">{{location.location}}, Kenya</p>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+                
+            </div>
+            {{/each}}
+        </div>
+    </div>
+{{/partial}}
+{{> layout.hbs}}

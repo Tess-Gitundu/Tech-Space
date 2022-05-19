@@ -1,0 +1,105 @@
+
+@keyframes fadeIn {
+	from{
+		opacity:0;
+	}
+	
+	to{
+		opacity:1;
+	}
+}
+
+@keyframes slideLeft{
+	0%{
+		transform: translateX(-500px);
+		 /*opacity: 0; */
+	}
+	
+	100%{
+		transform: translateX(0px);
+		 /*opacity: 1; */
+	}
+}
+
+@keyframes slideUp{
+	0%{
+		transform: translateY(500px) rotate(-45deg);
+	}
+	
+	100%{
+		transform: translateY(0px) rotate(0deg);
+	}
+}
+
+@keyframes rotateIn{
+	0%{
+		transform: rotate(-45deg);
+	}
+	
+	100%{
+		transform: rotate(0deg);
+	}
+
+}
+
+@keyframes delayedEntry{
+	0%{
+		transform: translateX(-500px);
+	}
+	
+	100%{
+		transform: translateX(0px);
+	}
+}
+
+@keyframes moveUpGently{
+	0%{
+		transform: translateY(500px) scale(0.1);
+	}
+	
+	100%{
+		transform: translateY(0px) scale(1);
+	}
+}
+
+
+
+#animatedLocation1{
+	animation:slideLeft 0.4s, fadeIn 0.4s;
+	animation-fill-mode: both;
+}
+
+#animatedLocation2{
+	
+	animation:slideLeft 0.6s,fadeIn 0.6s;
+	animation-fill-mode: both;
+	animation-delay: 0.4s;
+	
+}
+
+#animatedLocation3{
+	animation:slideLeft 0.8s, fadeIn 0.8s;
+	animation-fill-mode: both;
+	animation-delay: 0.8s;
+}
+
+
+
+
+#animatedRegisterBar{
+	animation: slideLeft 1.4s, fadeIn 0.8s;
+
+}
+
+#animatedSignUpSection{
+	animation: fadeIn 0.8s;
+	animation: slideUp 0.5s;
+}
+
+#animatedSignUpSection:hover{
+	transform: scale(1.3);
+}
+
+#userCard{
+	animation:moveUpGently 0.9s;
+}
