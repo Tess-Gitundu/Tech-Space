@@ -11,6 +11,8 @@ public class Space {
     private Boolean isFull;
     private Location location;
 
+    private String locationName;
+
     private LocationDao locationDao = new LocationDao(DB.sql2o);
 
     public Space(String spaceName, String spaceDetails, int locationId, Boolean isFull) {
@@ -18,6 +20,8 @@ public class Space {
         this.spaceDetails = spaceDetails;
         this.locationId = locationId;
         this.isFull = isFull;
+        setLocationName();
+        setLocation();
     }
 
     public void setId(int id) {
@@ -44,11 +48,19 @@ public class Space {
         return isFull;
     }
 
-    public void setLocation(Location location) {
+    public void setLocation() {
         this.location = locationDao.findById(this.locationId);
     }
 
     public Location getLocation() {
         return location;
+    }
+
+    public void setLocationName() {
+        this.locationName = getLocation().getLocation();
+    }
+
+    public String getLocationName() {
+        return locationName;
     }
 }
