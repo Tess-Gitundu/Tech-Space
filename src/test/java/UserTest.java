@@ -26,6 +26,7 @@ class UserTest {
     //helper method
     private User setupUser() {
         Location location = new Location("Nairobi");
+        locationDao.clearAll();
         locationDao.add(location);
         return new User("Jane Doe",location.getId(),"Java",true);
     }
@@ -74,7 +75,10 @@ class UserTest {
     public void allUserInstancesAreSaved() {
         User user1 = setupUser();
         userDao.save(user1);
-        User user2 = setupUser();
+        Location location = new Location("Nairobi");
+        locationDao.clearAll();
+        locationDao.add(location);
+        User user2 = new User("John Doe",location.getId(),"Java",true);
         userDao.save(user2);
         assert userDao.getAll() != null;
         assertEquals(2,userDao.getAll().size());

@@ -40,13 +40,16 @@ public class SpaceDaoTest {
 
     @Test
     public void add() {
+        spaceDao.clearAll();
         Space space = setUpSpace();
         assertEquals("iHub coding space", space.getSpaceName());
     }
 
     @Test
     public void update() {
+        spaceDao.clearAll();
         Location location = new Location("Nairobi");
+        locationDao.clearAll();
         locationDao.add(location);
         Space space = setUpSpace();
         Space updatedSpace = new Space("iHub Tech space", "Tech space for open to all geeks", location.getId(), false);
@@ -58,8 +61,12 @@ public class SpaceDaoTest {
     @Test
     public void getAll() {
         spaceDao.clearAll();
+        Location location = new Location("Nairobi");
+        locationDao.clearAll();
+        locationDao.add(location);
         Space space1 = setUpSpace();
-        Space space2 = setUpSpace();
+        Space space2 = new Space("iHub coding zone", "Tech space for open to all geeks", location.getId(), false);
+        spaceDao.add(space2);
         assertEquals(2, spaceDao.getAll().size());
     }
 
@@ -72,10 +79,11 @@ public class SpaceDaoTest {
     @Test
     public void findFreeSpace() {
         Location location = new Location("Nairobi");
+        locationDao.clearAll();
         locationDao.add(location);
         spaceDao.clearAll();
         Space space = setUpSpace();
-        Space space1 = setUpSpace();
+        Space space1 = new Space("iHub coding zone", "Tech space for open to all geeks", location.getId(), false);
         assertEquals(space.getLocationId(), spaceDao.findFreeSpace(space.getLocationId()).get(0).getLocationId());
     }
 
@@ -95,6 +103,7 @@ public class SpaceDaoTest {
     //
     public Space setUpSpace(){
         Location location = new Location("Nairobi");
+        locationDao.clearAll();
         locationDao.add(location);
         Space space = new Space("iHub coding space", "Tech space for open to all geeks", location.getId(), false);
         spaceDao.add(space);

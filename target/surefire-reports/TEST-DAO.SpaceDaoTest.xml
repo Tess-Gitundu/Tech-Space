@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="8" failures="0" name="DAO.SpaceDaoTest" time="269.082" errors="0" skipped="0">
+<testsuite tests="8" failures="0" name="DAO.SpaceDaoTest" time="278.725" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2022.1"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -63,12 +63,12 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="DAO.SpaceDaoTest" name="populateDb" time="15.797"/>
-  <testcase classname="DAO.SpaceDaoTest" name="getAll" time="52.469"/>
-  <testcase classname="DAO.SpaceDaoTest" name="update" time="33.193"/>
-  <testcase classname="DAO.SpaceDaoTest" name="findById" time="26.057"/>
-  <testcase classname="DAO.SpaceDaoTest" name="findFreeSpace" time="53.528"/>
-  <testcase classname="DAO.SpaceDaoTest" name="add" time="24.788"/>
-  <testcase classname="DAO.SpaceDaoTest" name="clearAll" time="28.942"/>
-  <testcase classname="DAO.SpaceDaoTest" name="deleteById" time="34.308"/>
+  <testcase classname="DAO.SpaceDaoTest" name="populateDb" time="16.548"/>
+  <testcase classname="DAO.SpaceDaoTest" name="getAll" time="52.708"/>
+  <testcase classname="DAO.SpaceDaoTest" name="update" time="39.757"/>
+  <testcase classname="DAO.SpaceDaoTest" name="findById" time="29.022"/>
+  <testcase classname="DAO.SpaceDaoTest" name="findFreeSpace" time="61.996"/>
+  <testcase classname="DAO.SpaceDaoTest" name="add" time="20.111"/>
+  <testcase classname="DAO.SpaceDaoTest" name="clearAll" time="23.099"/>
+  <testcase classname="DAO.SpaceDaoTest" name="deleteById" time="35.484"/>
 </testsuite>

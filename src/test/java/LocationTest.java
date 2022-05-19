@@ -50,6 +50,7 @@ class LocationTest {
 
     @Test
     public void saveLocation(){
+        locationDao.clearAll();
         Location location = setupLocation();
         locationDao.add(location);
         assertEquals("Nairobi", location.getLocation());
@@ -60,13 +61,14 @@ class LocationTest {
         locationDao.clearAll();
         Location location1 = setupLocation();
         locationDao.add(location1);
-        Location location2 = setupLocation();
+        Location location2 = new Location("Mombasa");
         locationDao.add(location2);
         assertEquals(2, locationDao.getAll().size());
     }
 
     @Test
     public void updateLocation(){
+        locationDao.clearAll();
         Location location = setupLocation();
         locationDao.add(location);
         Location updatedLocation = new Location("Naivasha");
@@ -77,6 +79,7 @@ class LocationTest {
 
     @Test
     public void findLocationByIdSuccess(){
+        locationDao.clearAll();
         Location location = setupLocation();
         locationDao.add(location);
         assertEquals(location, locationDao.findById(location.getId()));
@@ -84,6 +87,7 @@ class LocationTest {
 
     @Test
     public void testDeleteLocationById(){
+        locationDao.clearAll();
         Location location = setupLocation();
         locationDao.add(location);
         locationDao.deleteById(location.getId());
