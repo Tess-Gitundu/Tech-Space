@@ -1,6 +1,8 @@
 # TECH SPACE
 By Kimani Mbatia, Nicholas Kimutai, Samuel Odhiambo, Teresiah Gitundu & Yvonne Charawe
 
+![](readme-image.png)
+
 ## Table of contents
 + [Description](#Description)
 + [Project resources](#project-resources)
