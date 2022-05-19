@@ -1,0 +1,56 @@
+{{#partial "content"}}
+    <div class="container py-4 py-xl-5" style="background: rgba(15,14,14, 0.6);border-radius:20px;">
+        <div class="row mb-5">
+            <div class="col-md-8 col-xl-6 text-center text-light mx-auto">
+                <h2>Users</h2>
+                <p class="w-lg-50">Find for Existing users who can help you with your blockers .</p>
+            </div>
+        </div>
+		<div class="container-fluid">
+			<div class="row">
+                {{#each users}}
+			<div class="col text-light">
+				<div class="container" style="background: rgba(15,14,14, 0.8);border:1px white solid;border-bottom-left-radius: 3em; 3em;height:200px;width:600px;" id="userCard">
+				<div class="row">
+					<col-sm-1 style="height:200px;width:280px;align-content:left">
+						 <div class="container" style="background:background: rgba(15,14,14, 0.8);height:100%;width:100%">
+                        <h4 style="color:white">{{userName}}</h4>
+                        <div class="d-flex"><i class="material-icons fs-1">location_on</i>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:white">{{location}}</p>
+                                <p class="text-muted mb-0" style="color:white">Nairobi, Kenya</p>
+                            </div>
+							<br>
+                        </div>
+							 <br>
+						<div class="d-flex"><i class="material-icons fs-1">language</i>
+                            <div>
+                                <p class="fw-bold mb-0" style="color:white">{{language}}</p>
+                            </div>
+							<br>
+                        </div>
+
+						
+                    </div>
+					</col-sm-1>
+					<col-sm-1 style="width:280px;height:200px">
+						<div class="container"  style="position:relative;background:background: rgba(15,14,14, 0.8);height:100%;width:100%;justify-content:right">
+							<img src="userIcon.png" style="width:50%;height:50%;position:relative;right:-155px;">
+							<!--{{if available}}-->
+								<img src="Icon_Transparent_Green.png" style="width:20%;height:20%;position:relative;right:-15px;">
+								<img src="message.png" style="width:20%;height:20%;position:relative;right:-35px;top:100px">
+							<!--{{if}}-->
+						</div>
+					</col-sm-1>
+				</div>
+                   
+					
+				</div>  
+			</div>
+                {{/each}}
+        </div>
+		</div>
+        
+    </div>
+    {{/partial}}
+{{>layout.hbs}}
