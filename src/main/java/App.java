@@ -47,7 +47,6 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             List<Space> spaces = spaceDao.getAll();
             try{
-                User user = userDao.findById(currentUser.getId());
                 spaces = spaceDao.findFreeSpace(currentUser.getUserLocation());
             } catch (Exception e) {
                 spaces = spaceDao.getAll();
@@ -123,12 +122,12 @@ public class App {
             spaceDao.add(new Space("Ziwani ICT center", "Every line counts", mombasa.getId(), false));
 
                 // Kisumu
-            spaceDao.add(new Space("Victoria Tech Hall", "Your code, our future", nairobi.getId(), false));
-            spaceDao.add(new Space("Greenwood centre", "Coding for the next generation", nairobi.getId(), false));
-            spaceDao.add(new Space("Code alive hub", "The place to be for all developers", nairobi.getId(), false));
+            spaceDao.add(new Space("Victoria Tech Hall", "Your code, our future", kisumu.getId(), false));
+            spaceDao.add(new Space("Greenwood centre", "Coding for the next generation", kisumu.getId(), false));
+            spaceDao.add(new Space("Code alive hub", "The place to be for all developers", kisumu.getId(), false));
 
                 // Nakuru
-            spaceDao.add(new Space("Computech Hub", "Where great minds meet.", nairobi.getId(), false));
+            spaceDao.add(new Space("Computech Hub", "Where great minds meet.", nakuru.getId(), false));
             response.redirect("/");
             return null;
         });
