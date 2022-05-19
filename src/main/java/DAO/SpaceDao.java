@@ -7,6 +7,7 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SpaceDao implements SpaceInterface {
@@ -39,7 +40,15 @@ public class SpaceDao implements SpaceInterface {
     @Override
     public List<Space> getAll() {
         try(Connection conn = DB.sql2o.open()) {
-            return conn.createQuery("SELECT * FROM spaces").executeAndFetch(Space.class);
+            List<Space> dbSpaces = conn.createQuery("SELECT * FROM spaces").executeAndFetch(Space.class);
+            List<Space> spaces = new ArrayList<>();
+            for(int i=0; i<dbSpaces.size(); i++) {
+                Space dbSpace = dbSpaces.get(i);
+                Space space = new Space(dbSpace.getSpaceName(), dbSpace.getSpaceDetails(), dbSpace.getLocationId(), dbSpace.getIsFull());
+                space.setId(dbSpace.getId());
+                spaces.add(space);
+            }
+            return spaces;
         } catch (Sql2oException ex) {
             throw new RuntimeException(ex);
         }
@@ -48,7 +57,13 @@ public class SpaceDao implements SpaceInterface {
     @Override
     public Space findById(int id) {
         try(Connection conn = DB.sql2o.open()) {
-            return conn.createQuery("SELECT * FROM spaces WHERE id=:id").addParameter("id", id).executeAndFetchFirst(Space.class);
+            Space dbSpace = conn.createQuery("SELECT * FROM spaces WHERE id=:id").addParameter("id", id).executeAndFetchFirst(Space.class);
+            if(dbSpace != null) {
+                Space space = new Space(dbSpace.getSpaceName(), dbSpace.getSpaceDetails(), dbSpace.getLocationId(), dbSpace.getIsFull());
+                space.setId(id);
+                return space;
+            }
+            return dbSpace;
         } catch (Sql2oException ex) {
             throw new RuntimeException(ex);
         }
@@ -57,7 +72,15 @@ public class SpaceDao implements SpaceInterface {
     @Override
     public List<Space> findFreeSpace(int location_id) {
         try(Connection conn = DB.sql2o.open()) {
-            return conn.createQuery("SELECT * FROM spaces WHERE isfull='false' AND locationid=:locationId").addParameter("locationId", location_id).executeAndFetch(Space.class);
+            List<Space> dbSpaces = conn.createQuery("SELECT * FROM spaces WHERE isfull='false' AND locationid=:locationId").addParameter("locationId", location_id).executeAndFetch(Space.class);
+            List<Space> spaces = new ArrayList<>();
+            for(int i=0; i<dbSpaces.size(); i++) {
+                Space dbSpace = dbSpaces.get(i);
+                Space space = new Space(dbSpace.getSpaceName(), dbSpace.getSpaceDetails(), dbSpace.getLocationId(), dbSpace.getIsFull());
+                space.setId(dbSpace.getId());
+                spaces.add(space);
+            }
+            return spaces;
         } catch (Sql2oException ex) {
             throw new Sql2oException(ex);
         }

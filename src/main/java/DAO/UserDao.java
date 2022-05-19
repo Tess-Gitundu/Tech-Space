@@ -2,11 +2,13 @@ package DAO;
 
 import Database.DB;
 import Interfaces.UserInterface;
+import Models.Space;
 import Models.User;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements UserInterface {
@@ -42,19 +44,31 @@ public class UserDao implements UserInterface {
     @Override
     public List<User> getAll() {
         String sql = "SELECT * FROM users";
-        try (Connection con = DB.sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(User.class);
+        try(Connection conn = DB.sql2o.open()) {
+            List<User> dbUsers = conn.createQuery(sql).executeAndFetch(User.class);
+            List<User> users = new ArrayList<>();
+            for(int i=0; i<dbUsers.size(); i++) {
+                User dbUser = dbUsers.get(i);
+                User user = new User(dbUser.getUserName(), dbUser.getUserLocation(), dbUser.getLanguage(), dbUser.isAvailable());
+                user.setId(dbUser.getId());
+                users.add(user);
+            }
+            return users;
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
     @Override
     public User findById(int id) {
-        try (Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM users WHERE id=:id";
-            User user = con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(User.class);
+        String sql = "SELECT * FROM users WHERE id=:id";
+        try(Connection conn = DB.sql2o.open()) {
+            User dbUser = conn.createQuery(sql).addParameter("id", id).executeAndFetchFirst(User.class);
+            User user = new User(dbUser.getUserName(), dbUser.getUserLocation(), dbUser.getLanguage(), dbUser.isAvailable());
+            user.setId(dbUser.getId());
             return user;
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
@@ -71,7 +85,12 @@ public class UserDao implements UserInterface {
 
     @Override
     public void delete(int id) {
-
+        String sql = "DELETE FROM users WHERE id=:id";
+        try(Connection conn = DB.sql2o.open()) {
+            conn.createQuery(sql).addParameter("id", id).executeUpdate();
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
 }

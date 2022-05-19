@@ -46,6 +46,7 @@ public class App {
         get("spaces", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Space> spaces = spaceDao.getAll();
+            System.out.println(spaces.get(1).locationName);
             try{
                 spaces = spaceDao.findFreeSpace(currentUser.getUserLocation());
             } catch (Exception e) {

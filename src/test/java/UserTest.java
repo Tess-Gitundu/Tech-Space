@@ -72,7 +72,7 @@ class UserTest {
         User user = setupUser();
         userDao.save(user);
         User foundUser = userDao.findById(user.getId());
-        assertEquals(user,foundUser);
+        assertEquals(user.getId(),foundUser.getId());
     }
 
     @Test

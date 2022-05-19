@@ -23,6 +23,7 @@ public class User {
         this.userLocation = userLocation;
         this.language = language;
         this.available = available;
+        setLocation();
     }
 
     public String getUserName() {
@@ -79,7 +80,7 @@ public class User {
     }
 
 
-    public void setLocation(Location location) {
+    public void setLocation() {
         LocationDao locationDao = new LocationDao(DB.sql2o);
         this.location = locationDao.findById(this.userLocation);;
     }

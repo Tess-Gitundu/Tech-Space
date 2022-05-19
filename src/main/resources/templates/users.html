@@ -16,7 +16,7 @@
 								<h5 style="color:white; padding-bottom: 40px;padding-top: 20px">{{userName}}</h5>
 								<div class="d-flex"><i class="material-icons fs-3">location_on</i>
 									<div>
-										<p style="color:white">{{userLocation}}</p>
+										<p style="color:white">{{location.location}}</p>
 										<p class="text-muted mb-0" style="color:white"></p>
 									</div>
 								</div>
@@ -32,10 +32,10 @@
 						<col-sm-1 style="width:180px;height:200px">
 							<div class="container"  style="position:relative;background:background: rgba(15,14,14, 0.8);height:100%;width:100%;justify-content:right">
 								<img src="assets/img/userIcon.png" style="width:80%;height:50%;position:relative;right:-50px;">
-								{{if available}}
+								{{#if available}}
 								<img src="assets/img/Icon_Transparent_Green.png" style="width:20%;height:10%;position:relative;right:70px;top:-80px">
 
-								{{if}}
+								{{/if}}
 							</div>
 						</col-sm-1>
 					</div>
