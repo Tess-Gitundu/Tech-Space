@@ -35,15 +35,22 @@ public class App {
 
         get("spaces", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            User user = userDao.findById(currentUser.getId());
-            List<Space> spaces = spaceDao.findFreeSpace(currentUser.getUserLocation());
+            List<Space> spaces = spaceDao.getAll();
+            try{
+                User user = userDao.findById(currentUser.getId());
+                spaces = spaceDao.findFreeSpace(currentUser.getUserLocation());
+            } catch (Exception e) {
+                spaces = spaceDao.getAll();
+            }
             model.put("spaces", spaces);
+            model.put("titleSpaces", true);
             return new ModelAndView(model, "spaces.html");
         }, new HandlebarsTemplateEngine());
 
         get("/join", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             model.put("locations", locationDao.getAll());
+            model.put("titleFind", true);
             return new ModelAndView(model, "signUp.html");
         }, new HandlebarsTemplateEngine());
 
@@ -68,6 +75,13 @@ public class App {
             response.redirect("spaces");
             return null;
         });
+
+        get("/users", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            model.put("users", userDao.getAll());
+            model.put("titleUsers", true);
+            return new ModelAndView(model, "users.html");
+        }, new HandlebarsTemplateEngine());
 
     }
 }

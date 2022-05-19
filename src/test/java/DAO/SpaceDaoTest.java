@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.sql2o.Connection;
 
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class SpaceDaoTest {
@@ -27,6 +29,13 @@ public class SpaceDaoTest {
     @After
     public void tearDown() throws Exception {
         conn.close();
+    }
+
+    @Test
+    public void populateDb() {
+        Space space = new Space("Cyberspace hub", "Code code code", 3, false);
+        spaceDao.add(space);
+        assertEquals(true, true);
     }
 
     @Test

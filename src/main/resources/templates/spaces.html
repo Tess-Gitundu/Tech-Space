@@ -8,16 +8,16 @@
                 <p class="w-lg-50">Find a detailed list of available spaces here. Click on a space to see more details and book your spot.</p>
             </div>
         </div>
-        {{#each spaces}}
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+            {{#each spaces}}
             <div class="col">
 				<div class="container-fluid" style="background: rgba(15,14,14, 0.8);border-radius: 3em;height:500px;" id="animatedLocation1">\
 					<br>
 					<img style="height: 200px; width:350px" src="assets/img/ihub.jpeg">
                     <div class="container" style="background:background: rgba(15,14,14, 0.8)">
                         <p class="text-primary card-text mb-0">Space</p>
-                        <h4 style="color:white">ABC Tech Hub</h4>
-                        <p style="color:white">Located in the Heart of Nairobi, ABC Tech hub is our premier Dev space area for established and aspiring devleopers to work on their latest inventions.&nbsp; &nbsp;</p>
+                        <h4 style="color:white">{{spaceName}}</h4>
+                        <p style="color:white">{{spaceDetails}}&nbsp; &nbsp;</p>
                         <div class="d-flex"><i class="material-icons fs-1">location_on</i>
                             <div>
                                 <p class="fw-bold mb-0" style="color:white">Lavington</p>

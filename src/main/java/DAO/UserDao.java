@@ -19,7 +19,7 @@ public class UserDao implements UserInterface {
     @Override
     public void save(User user) {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO users2 (userName, userLocation, language, available) VALUES (:userName, :userLocation, :language, :available)";
+            String sql = "INSERT INTO users (userName, userLocation, language, available) VALUES (:userName, :userLocation, :language, :available)";
             int id = (int) con.createQuery(sql, true)
                     .bind(user)
                     .executeUpdate()
@@ -30,7 +30,7 @@ public class UserDao implements UserInterface {
 
     @Override
     public void update(int id, User user) {
-        String sql = "UPDATE users2 SET userName=:userName, userLocation=:userLocation, language=:language, available=:available WHERE id=:id";
+        String sql = "UPDATE users SET userName=:userName, userLocation=:userLocation, language=:language, available=:available WHERE id=:id";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql).bind(user)
                     .executeUpdate();
@@ -41,7 +41,7 @@ public class UserDao implements UserInterface {
 
     @Override
     public List<User> getAll() {
-        String sql = "SELECT * FROM users2";
+        String sql = "SELECT * FROM users";
         try (Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(User.class);
         }
@@ -50,7 +50,7 @@ public class UserDao implements UserInterface {
     @Override
     public User findById(int id) {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM users2 WHERE id=:id";
+            String sql = "SELECT * FROM users WHERE id=:id";
             User user = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(User.class);
@@ -60,7 +60,7 @@ public class UserDao implements UserInterface {
 
     @Override
     public void clearAll() {
-        String sql = "DELETE from users2";
+        String sql = "DELETE from users";
         try (Connection con = DB.sql2o.open()) {
             con.createQuery(sql)
                     .executeUpdate();

@@ -16,6 +16,8 @@ public class User {
     private boolean available;
     private int id;
 
+    private Location location;
+
     public User(String userName, int userLocation, String language, boolean available) {
         this.userName = userName;
         this.userLocation = userLocation;
@@ -77,5 +79,12 @@ public class User {
     }
 
 
+    public void setLocation(Location location) {
+        LocationDao locationDao = new LocationDao(DB.sql2o);
+        this.location = locationDao.findById(this.userLocation);;
+    }
 
+    public Location getLocation() {
+        return location;
+    }
 }

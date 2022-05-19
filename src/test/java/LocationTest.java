@@ -36,6 +36,13 @@ class LocationTest {
     }
 
     @Test
+    public void populateDb(){
+        Location location = new Location("Mombasa");
+        locationDao.add(location);
+        assertEquals(true, true);
+    }
+
+    @Test
     public void Location_getsSavedLocation() {
         Location location = setupLocation();
         assertEquals("Nairobi", location.getLocation());

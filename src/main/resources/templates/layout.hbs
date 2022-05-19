@@ -21,9 +21,9 @@
         <div class="container"><a class="navbar-brand" href="#" style="font-size: 35px;">TECH SPACE</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-3"><a class="nav-link active" href="#" style="font-size: 30px;">Users</a></li>
-                    <li class="nav-item"><a class="nav-link mx-3" href="/spaces" style="font-size: 30px;">Spaces</a></li>
-                    <li class="nav-item"><a class="nav-link ms-3" href="/join" style="font-size: 30px;">Join</a></li>
+                    <li class="nav-item mx-3"><a class="nav-link {{#if titleUsers}}active{{/if}}" href="/users" style="font-size: 30px;">Users</a></li>
+                    <li class="nav-item"><a class="nav-link {{#if titleSpaces}}active{{/if}} mx-3" href="/spaces" style="font-size: 30px;">Spaces</a></li>
+                    <li class="nav-item"><a class="nav-link {{#if titleFind}}active{{/if}} ms-3" href="/join" style="font-size: 30px;">Find Space</a></li>
                 </ul>
             </div>
         </div>
