@@ -13,7 +13,7 @@ public class DB {
             conn.createQuery("CREATE TABLE IF NOT EXISTS users2 (\n" +
                     " id SERIAL PRIMARY KEY,\n" +
                     " userName VARCHAR,\n" +
-                    " userLocation VARCHAR,\n" +
+                    " userLocation INT,\n" +
                     " language VARCHAR,\n" +
                     " available VARCHAR\n" +
                     ")").executeUpdate();

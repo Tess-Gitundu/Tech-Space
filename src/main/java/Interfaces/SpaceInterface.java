@@ -13,7 +13,7 @@ public interface SpaceInterface {
 
     Space findById(int id);
 
-    List<Space> findFreeSpace();
+    List<Space> findFreeSpace(int location_id);
 
     void deleteById(int id);
 

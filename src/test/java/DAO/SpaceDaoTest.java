@@ -62,10 +62,12 @@ public class SpaceDaoTest {
 
     @Test
     public void findFreeSpace() {
+        Location location = new Location("Nairobi");
+        locationDao.add(location);
         spaceDao.clearAll();
         Space space = setUpSpace();
         Space space1 = setUpSpace();
-        assertEquals(2, spaceDao.findFreeSpace().size());
+        assertEquals(space.getLocationId(), spaceDao.findFreeSpace(space.getLocationId()).get(0).getLocationId());
     }
 
     @Test

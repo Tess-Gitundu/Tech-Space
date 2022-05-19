@@ -1,5 +1,7 @@
+import DAO.LocationDao;
 import DAO.UserDao;
 import Database.DB;
+import Models.Location;
 import Models.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
     private UserDao userDao = new UserDao(DB.sql2o);
+
+    private LocationDao locationDao = new LocationDao(DB.sql2o);
 
     @BeforeEach
     void setUp() {
@@ -21,7 +25,9 @@ class UserTest {
 
     //helper method
     private User setupUser() {
-        return new User("Jane Doe","Nairobi","Java",true);
+        Location location = new Location("Nairobi");
+        locationDao.add(location);
+        return new User("Jane Doe",location.getId(),"Java",true);
     }
 
     @Test
@@ -40,7 +46,7 @@ class UserTest {
     @Test
     public void getsLocationOfSavedUser() {
         User user = setupUser();
-        assertEquals("Nairobi", user.getUserLocation());
+        assertEquals(locationDao.findById(user.getUserLocation()).getId(), user.getUserLocation());
     }
 
     @Test
@@ -78,7 +84,7 @@ class UserTest {
     void correctlyUpdatesUserInfo() {
         User user = setupUser();
         userDao.save(user);
-        User newUser = new User("John Doe","Kisumu","Python",false);
+        User newUser = new User("John Doe",1,"Python",false);
         newUser.setId(user.getId());
         assertEquals("Jane Doe",user.getUserName());
         userDao.update(user.getId(), newUser);
@@ -87,7 +93,7 @@ class UserTest {
 
     @Test
     public void nullFieldsAreNotSaved() {
-        User user = new User("","","",true);
+        User user = new User("",1,"",true);
         try {
             userDao.save(user);
             assert userDao.getAll() != null;

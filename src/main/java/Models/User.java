@@ -1,5 +1,6 @@
 package Models;
 
+import DAO.LocationDao;
 import Database.DB;
 import org.sql2o.Connection;
 import org.sql2o.Sql2oException;
@@ -10,12 +11,12 @@ import java.util.Objects;
 public class User {
 
     private String userName;
-    private String userLocation;
+    private int userLocation;
     private String language;
     private boolean available;
     private int id;
 
-    public User(String userName, String userLocation, String language, boolean available) {
+    public User(String userName, int userLocation, String language, boolean available) {
         this.userName = userName;
         this.userLocation = userLocation;
         this.language = language;
@@ -30,11 +31,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserLocation() {
+    public int getUserLocation() {
         return userLocation;
     }
 
-    public void setUserLocation(String userLocation) {
+    public void setUserLocation(int userLocation) {
         this.userLocation = userLocation;
     }
 
@@ -74,15 +75,6 @@ public class User {
     public int hashCode() {
         return Objects.hash(userName, userLocation, language, available, id);
     }
-
-
-
-
-
-
-
-
-
 
 
 

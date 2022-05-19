@@ -55,9 +55,9 @@ public class SpaceDao implements SpaceInterface {
     }
 
     @Override
-    public List<Space> findFreeSpace() {
+    public List<Space> findFreeSpace(int location_id) {
         try(Connection conn = DB.sql2o.open()) {
-            return conn.createQuery("SELECT * FROM spaces WHERE isfull='false'").executeAndFetch(Space.class);
+            return conn.createQuery("SELECT * FROM spaces WHERE isfull='false' AND locationid=:locationId").addParameter("locationId", location_id).executeAndFetch(Space.class);
         } catch (Sql2oException ex) {
             throw new Sql2oException(ex);
         }
