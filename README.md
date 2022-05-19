@@ -30,6 +30,8 @@ Link : `https://coding-tech-space.herokuapp.com/`
 ## Requirements
 + Either a smartphone, computer or tablet
 + An access to the internet
+
+
 ### 1. Local repository
 + Make sure you have a stable internet connection to clone the repository.
 + Type the following command in your terminal to clone this repository.
@@ -58,6 +60,9 @@ Feel free to fork the project and add neccessary changes.
 + Postgres - To create & connect to our database.
 + Spark - Framework.
 
+
+## Known Bugs
+Currently there are no known bugs.
 
 ## Contact information
 + Kimani Mbatia : `kimani.mbatia@student.moringaschool.com`
