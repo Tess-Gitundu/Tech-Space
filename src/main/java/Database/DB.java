@@ -29,6 +29,18 @@ public class DB {
         } catch (Sql2oException ex) {
             throw new RuntimeException(ex);
         }
+
+        try{
+            conn.createQuery("CREATE TABLE IF NOT EXISTS spaces (\n" +
+                    " id SERIAL PRIMARY KEY,\n" +
+                    " spacename VARCHAR,\n" +
+                    " spacedetails VARCHAR,\n" +
+                    " locationid INT,\n" +
+                    " isfull VARCHAR\n" +
+                    ")").executeUpdate();
+        } catch (Sql2oException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
 }
